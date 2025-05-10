@@ -1,4 +1,4 @@
-from dog import Dog
+from lib.dog import Dog
 import pytest
 
 
