@@ -9,10 +9,11 @@ APPROVED_BREEDS = [
     "Pointer"
 ]
 
+
 class Dog:
-    def __init__(self, name="", breed=""):
-        self.name = name  
-        self.breed = breed  
+    def __init__(self, name='Fido', breed='Mastiff'):
+        self.name = name
+        self.breed = breed
 
     @property
     def name(self):
@@ -21,12 +22,13 @@ class Dog:
 
     @name.setter
     def name(self, name):
-        """Name must be a string between 1-25 chars"""
-        if not isinstance(name, str):
-            raise ValueError("Name must be a string.")
-        if not (1 <= len(name) <= 25):
-            raise ValueError("Name must be between 1 and 25 characters.")
-        self._name = name
+        """Name must be a string between 1 and 25 characters in length"""
+        if isinstance(name, str) and 1 <= len(name) <= 25:
+            self._name = name
+        else:
+            raise ValueError(
+                "Name must be string between 1 and 25 characters."
+            )
 
     @property
     def breed(self):
@@ -34,12 +36,9 @@ class Dog:
         return self._breed
 
     @breed.setter
-    def breed(self, breed, raise_exception=True):
-        if breed not in APPROVED_BREEDS:
-            if raise_exception:
-                raise ValueError("Breed must be in list of approved breeds.")
-            else:
-                print("Breed must be in list of approved breeds.")
-            self._breed = None
-        else:
+    def breed(self, breed):
+        """Breed must be in the list of approved breeds"""
+        if breed in APPROVED_BREEDS:
             self._breed = breed
+        else:
+            raise ValueError("Breed must be in list of approved breeds.")
