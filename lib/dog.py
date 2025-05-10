@@ -11,8 +11,8 @@ APPROVED_BREEDS = [
 
 class Dog:
     def __init__(self, name="", breed=""):
-        self.name = name  # Uses name setter
-        self.breed = breed  # Uses breed setter
+        self.name = name  
+        self.breed = breed  
 
     @property
     def name(self):
